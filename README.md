@@ -22,6 +22,10 @@ Hardware abilities:
  * Peripherals - I2C, SPI, UART, USB CDC
  * Integration - RF 2.4GHz, Bluetooth LE, Bluetooth 4.0
 
+## Stuff I Read
+
+If you feel like giving back, here's my Amazon wish list: https://amzn.com/w/WDCTYWS5987O
+
 Reading literature (Data Structures, Algorithms)
 
  * Introduction to Algorigthms, Third Edition - Cormen, Leiserson, Rivest, Stein
@@ -40,6 +44,7 @@ Reading literature (Linguistics)
 Reading literature (Spiritual)
 
  * New World Translation of the Holy Scriptures (2013 Edition)
+
 
 ## What you're looking at
 
