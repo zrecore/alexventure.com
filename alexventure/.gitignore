@@ -16,5 +16,7 @@ tests/.coverage
 build/
 tests/report/
 
+static/admin/
+
 # Exclude sqlite3 database
 *.sqlite3
