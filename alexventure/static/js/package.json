@@ -1,0 +1,22 @@
+{
+  "name": "alexventure",
+  "version": "1.0.0",
+  "description": "Alex Albino's Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zrecore/alexventure.com.git"
+  },
+  "author": "Alex Albino",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zrecore/alexventure.com/issues"
+  },
+  "homepage": "https://github.com/zrecore/alexventure.com#readme",
+  "devDependencies": {
+    "babelify": "^7.3.0"
+  }
+}
