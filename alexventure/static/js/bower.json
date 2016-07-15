@@ -1,0 +1,22 @@
+{
+  "name": "alexventure",
+  "homepage": "https://github.com/zrecore/alexventure.com",
+  "authors": [
+    "Alex Albino <webmaster@alexventure.com>"
+  ],
+  "description": "Alex Albino's Portfolio",
+  "main": "",
+  "license": "GPL v3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.2.1",
+    "jquery": "^3.1.0"
+  }
+}
