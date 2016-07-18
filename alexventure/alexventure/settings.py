@@ -22,12 +22,14 @@ SITE_ROOT = dirname(DJANGO_ROOT)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG'] == 1;
+DEBUG = os.environ['IS_PRODUCTION'] == '1';
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 ALLOWED_HOSTS = []
 
@@ -171,4 +173,10 @@ PIPELINE_JS = {
                 ),
                 'output_filename': 'js/alexventure.js'
         }
+}
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'JAVASCRIPT': PIPELINE_JS,
+    'STYLESHEETS': PIPELINE_CSS,
 }
