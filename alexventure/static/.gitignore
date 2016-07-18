@@ -1,2 +1,5 @@
 js/bower_components
 js/node_modules
+js/alexventure*.js
+css/alexventure*.css
+rest_framework
