@@ -1,32 +1,25 @@
-<DOCTYPTE html>
-<html charset="utf-8">
-    <head>
-        <title>Alex Albino - Sr. Developer</title>
-        <link rel="icon" href="/static/favicon.png" type="static/png">
-    </head>
-    <body>
-        <h1>Alex Albino - Sr. Developer</h1>
-        <sub>Web, Hardware, Software, Interactive</sub>
-        <hr>
+{% extends '_base.html' %}
+{% block content %}
+<h1>Alex Albino - Sr. Developer</h1>
+<sub>Web, Hardware, Software, Interactive</sub>
+<hr>
+<p>Currently working on a rewrite of my portfolio using Python, Django, React.</p>
 
-        <p>Currently working on a rewrite of my portfolio using Python, Django, React.</p>
+<p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
 
-        <p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
+<h3>Github repositories</h3>
+<ul>
+    <li><a href="https://github.com/zrecore">zrecore - Personal web dev work</a></li>
+    <li><a href="https://github.com/femtoduino">femtoduino - open source AVR work, and some wireless BLE integration into Node</a></li>
+    <li><a href="https://github.com/femtoio">femtoio - ARM hardware design, integration into Node, Unity, UE4, ThreeJS</a></li>
+    <li><a href="https://github.com/xtalio">xtalio - eCommerce platforms using different scripting/programming languages.</a></li>
+</ul>
 
-        <h3>Github repositories</h3>
-        <ul>
-            <li><a href="https://github.com/zrecore">zrecore - Personal web dev work</a></li>
-            <li><a href="https://github.com/femtoduino">femtoduino - open source AVR work, and some wireless BLE integration into Node</a></li>
-            <li><a href="https://github.com/femtoio">femtoio - ARM hardware design, integration into Node, Unity, UE4, ThreeJS</a></li>
-            <li><a href="https://github.com/xtalio">xtalio - eCommerce platforms using different scripting/programming languages.</a></li>
-        </ul>
-
-        <h3>Notable projects</h3>
-        <ul>
-            <li><a href="https://github.com/zrecore/awesome">AwesomeChat platform - C#, .NET Core 1.0, AngularJS 2, Ionic2, Material Design</a></li>
-            <li><a href="https://github.com/femtoduino/imuduino-btle">IMUduino - Wireless IMU, ThreeJS, Node, Bluetooth LE, Wiring, C</a></li>
-            <li><a href="https://github.com/femtoio/ArduinoCore-atsamd21e18a">Arduino core for the Atmel SAM R21E chip  - C, C++, ASF, Wiring</a></li>
-            <li><a href="https://github.com/zrecore/zrecore-js">An early implementation of commerce data models using Node</a></li>
-        </ul>
-    </body>
-</html>
+<h3>Notable projects</h3>
+<ul>
+    <li><a href="https://github.com/zrecore/awesome">AwesomeChat platform - C#, .NET Core 1.0, AngularJS 2, Ionic2, Material Design</a></li>
+    <li><a href="https://github.com/femtoduino/imuduino-btle">IMUduino - Wireless IMU, ThreeJS, Node, Bluetooth LE, Wiring, C</a></li>
+    <li><a href="https://github.com/femtoio/ArduinoCore-atsamd21e18a">Arduino core for the Atmel SAM R21E chip  - C, C++, ASF, Wiring</a></li>
+    <li><a href="https://github.com/zrecore/zrecore-js">An early implementation of commerce data models using Node</a></li>
+</ul>
+{% endblock %}
