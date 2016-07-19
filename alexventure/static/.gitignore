@@ -1,5 +1,8 @@
 js/bower_components
 js/node_modules
 js/alexventure*.js
+js/bower.*.js
+js/package.*.js
 css/alexventure*.css
+css/style.*.css
 rest_framework
