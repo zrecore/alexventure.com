@@ -26,7 +26,7 @@ SITE_ROOT = dirname(DJANGO_ROOT)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['IS_PRODUCTION'] == '1';
+DEBUG = os.environ['IS_PRODUCTION'] != '1';
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
