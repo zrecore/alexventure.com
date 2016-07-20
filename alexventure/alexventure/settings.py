@@ -33,6 +33,9 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 ALLOWED_HOSTS = []
 
+if DEBUG != True:
+    ALLOWED_HOSTS = ['alexventure.com',]
+
 
 # Application definition
 
