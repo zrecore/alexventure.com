@@ -1,8 +1,8 @@
-js/bower_components
-js/node_modules
+assets/js/bower_components
+assets/js/node_modules
 js/alexventure*.js
 js/bower.*.js
 js/package.*.js
 css/alexventure*.css
 css/style.*.css
-rest_framework
+assets/rest_framework
