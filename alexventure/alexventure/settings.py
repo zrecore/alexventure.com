@@ -131,13 +131,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ()
 
-if DEBUG != True:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-if DEBUG == True:
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# This is where our static assets should end up when we run the collectstatic manage.py command
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/cdn-assets')
+
+# The collectstatic manage.py command will search these paths for static assets
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/assets'),)
+
+#if DEBUG != True:
+#    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 # Django Pipeline (and browserify)
@@ -159,8 +162,10 @@ PIPELINE_COMPILERS = (
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
 
+PIPELINE_BROWSERIFY_ARGUMENTS = ''
+
 if DEBUG:
-        PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify'
+        PIPELINE_BROWSERIFY_ARGUMENTS = '-d -t babelify'
 
 PIPELINE_CSS = {
         'alexventure': {
@@ -174,10 +179,10 @@ PIPELINE_CSS = {
 PIPELINE_JS = {
         'alexventure': {
                 'source_filenames': (
-                        'js/bower_components/jquery/dist/jquery.min.js',
-                        'js/bower_components/react/JSXTransformer.js',
-                        'js/bower_components/react/react-with-addons.js',
-                        'js/app.browserify.js',
+                        "js/*.browserify.js",
+                        "js/bower_components/jquery/dist/jquery.min.js",
+                        "js/bower_components/react/JSXTransformer.js",
+                        "js/bower_components/react/react-with-addons.js",
                 ),
                 'output_filename': 'js/alexventure.js'
         }
@@ -185,6 +190,7 @@ PIPELINE_JS = {
 
 PIPELINE = {
     'PIPELINE_ENABLED': True,
+    'BROWSERIFY_ARGUMENTS': PIPELINE_BROWSERIFY_ARGUMENTS,
     'JAVASCRIPT': PIPELINE_JS,
     'STYLESHEETS': PIPELINE_CSS,
     'JS_COMPRESSOR': PIPELINE_JS_COMPRESSOR,
