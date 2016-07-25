@@ -31,10 +31,12 @@ DEBUG = os.environ['IS_PRODUCTION'] != '1';
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 if DEBUG != True:
-    ALLOWED_HOSTS = ['alexventure.com',]
+    ALLOWED_HOSTS = ['alexventure.com']
+
+
 
 
 # Application definition
@@ -48,8 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'pipeline',
+    'compressor',
+    # 'pipeline',
     'rest_framework',
+    'sass',
+    'webpack_loader',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -127,6 +132,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Webpack
+# See http://owaislone.org/blog/webpack-plus-reactjs-and-django/
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'static/js/webpack-stats.json')
+    }
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -134,66 +148,98 @@ STATIC_URL = '/static/'
 
 
 # This is where our static assets should end up when we run the collectstatic manage.py command
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/cdn-assets')
+STATIC_ROOT = os.path.join(BASE_DIR, '.static')
 
 # The collectstatic manage.py command will search these paths for static assets
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/assets'),)
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
 
-#if DEBUG != True:
-#    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.ModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ]
+}
+
 
 
 # Django Pipeline (and browserify)
 # See http://gregblogs.com/how-django-reactjs-and-browserify/
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        'pipeline.finders.PipelineFinder',
+        # 'pipeline.finders.PipelineFinder',
+        'compressor.finders.CompressorFinder',
 )
 
 # browserfify-specific
-PIPELINE_COMPILERS = (
-        'pipeline_browserify.compiler.BrowserifyCompiler',
+# PIPELINE_COMPILERS = (
+#     'react.utils.pipeline.JSXCompiler',
+#     'pipeline_browserify.compiler.BrowserifyCompiler',
+#     'pipeline.compilers.sass.SASSCompiler',
+        
+# )
+
+# PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
+# PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+
+# PIPELINE_BROWSERIFY_ARGUMENTS = None
+
+# if DEBUG:
+#         PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify --presets es2015 react'
+
+
+# PIPELINE_CSS = {
+#         'app_style': {
+#                 'source_filenames': (
+#                         'css/style.scss',
+#                 ),
+#                 'output_filename': 'css/app.css'
+#         }
+# }
+
+
+# PIPELINE_JS = {
+#         'ReactJs': {
+#                 'source_filenames': (
+#                     "js/bower_components/react/react.js",
+#                     "js/bower_components/react/react-dom.js",
+#                 ),
+#                 'output_filename': 'js/react.js'
+#         },
+#         'Alexventure': {
+#             'source_filenames': (
+#                 "js/app.bundle.js",
+#             ),
+#             'output_filename': 'js/app.js'
+#         },
+# }
+
+# PIPELINE_ENABLED = not DEBUG
+
+# PIPELINE_BROWSERIFY_BINARY = os.path.join(BASE_DIR, 'static/js/node_modules/.bin/browserify')
+
+# PIPELINE = {
+#     'PIPELINE_ENABLED': PIPELINE_ENABLED,
+#     'BROWSERIFY_BINARY': PIPELINE_BROWSERIFY_BINARY,
+#     'BROWSERIFY_ARGUMENTS': PIPELINE_BROWSERIFY_ARGUMENTS,
+#     'JAVASCRIPT': PIPELINE_JS,
+#     'STYLESHEETS': PIPELINE_CSS,
+#     'JS_COMPRESSOR': PIPELINE_JS_COMPRESSOR,
+#     'CSS_COMPRESSOR': PIPELINE_CSS_COMPRESSOR,
+#     'COMPILERS': PIPELINE_COMPILERS,
+# }
+
+COMPRESS_PRECOMPILERS = (
+    ('text/scss', 'sass --scss {infile} {outfile}'),
 )
-
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
-
-PIPELINE_BROWSERIFY_ARGUMENTS = ''
-
-if DEBUG:
-        PIPELINE_BROWSERIFY_ARGUMENTS = '-d -t babelify'
-
-PIPELINE_CSS = {
-        'alexventure': {
-                'source_filenames': (
-                        'css/style.css',
-                ),
-                'output_filename': 'css/alexventure.css'
-        }
-}
-
-PIPELINE_JS = {
-        'alexventure': {
-                'source_filenames': (
-                        "js/*.browserify.js",
-                        "js/bower_components/jquery/dist/jquery.min.js",
-                        "js/bower_components/react/JSXTransformer.js",
-                        "js/bower_components/react/react-with-addons.js",
-                ),
-                'output_filename': 'js/alexventure.js'
-        }
-}
-
-PIPELINE = {
-    'PIPELINE_ENABLED': True,
-    'BROWSERIFY_ARGUMENTS': PIPELINE_BROWSERIFY_ARGUMENTS,
-    'JAVASCRIPT': PIPELINE_JS,
-    'STYLESHEETS': PIPELINE_CSS,
-    'JS_COMPRESSOR': PIPELINE_JS_COMPRESSOR,
-    'CSS_COMPRESSOR': PIPELINE_CSS_COMPRESSOR,
-    'COMPILERS': PIPELINE_COMPILERS,
-}

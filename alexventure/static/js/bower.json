@@ -5,7 +5,7 @@
     "Alex Albino <webmaster@alexventure.com>"
   ],
   "description": "Alex Albino's Portfolio",
-  "main": "",
+  "main": "alexventure.browserify.js",
   "license": "GPL v3",
   "private": true,
   "ignore": [

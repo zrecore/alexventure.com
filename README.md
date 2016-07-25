@@ -50,6 +50,14 @@ Reading literature (Spiritual)
 
 My personal portfolio of work. I'm leveraging Python 3.5 + Django + virtualenv for the back-end as a RESTful service, and React + Flux for the front-end.
 
+This project uses the following: 
+ * node (globally): webpack, uglify-js, babelify, babel-cli
+ * python: Django (1.9.7), django-appconf (1.0.2), django-compressor (2.0), django-libsass (0.7), django-webpack-loader, djangorestframework (3.4.0), libsass (0.11.1), pip (8.1.2), rcssmin (1.0.6), rjsmin (1.0.12), setuptools (24.0.2), six (1.10.0), wheel (0.29.0)
+ * ruby (gems): sass
+
+
+## License
+
 This project is made open source under the terms of GNU GPL v3 or higher license.
 
 See it live at https://alexventure.com

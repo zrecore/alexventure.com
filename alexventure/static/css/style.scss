@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
+
+$primary-color: #0033aa;
+$background-color: #fefaee;
+$font-roboto: 'Roboto';
+
+body { font-family: $font-roboto; background-color: $background-color; }
+h1 { color: $primary-color; }

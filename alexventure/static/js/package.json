@@ -1,0 +1,40 @@
+{
+  "name": "alexventure",
+  "version": "1.0.0",
+  "description": "Alex Albino's Portfolio",
+  "main": "alexventure.browserify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zrecore/alexventure.com.git"
+  },
+  "author": "Alex Albino",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zrecore/alexventure.com/issues"
+  },
+  "homepage": "https://github.com/zrecore/alexventure.com#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "browserify": "^13.0.1",
+    "react": "^15.2.1",
+    "react-hot-loader": "^1.3.0",
+    "uglify-js": "^2.7.0",
+    "webpack": "^1.13.1",
+    "webpack-bundle-tracker": "0.0.93",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "material-ui": "^0.15.2",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-tap-event-plugin": "^1.0.0"
+  }
+}

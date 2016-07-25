@@ -1,5 +1,4 @@
-{% load pipeline %}
-<DOCTYPTE html>
+{% load render_bundle from webpack_loader %}{% load compress %}{% load static %}<DOCTYPE html>
 <html charset="utf-8">
     <head>
         <meta charset="utf-8">
@@ -7,12 +6,17 @@
         <meta name="description" content="Full-stack Web Developer San Francisco, CA">
         <meta name="author" content="Alex Albino">
         <title>Alex Albino - Sr. Developer</title>
-        <link rel="icon" href="/static/favicon.png" type="image/png">
-        {% stylesheet 'alexventure' %}
+        <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+        
+        {% compress css %}
+        <link rel="styleshhet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+        {% endcompress %}
     </head>
     <body>
+    
         {% block content %}{% endblock %}
         <!-- js -->
-        {% javascript 'alexventure' %}
+        {% render_bundle 'main' %}
+        
     </body>
 </html>
