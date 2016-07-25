@@ -27,14 +27,15 @@ SITE_ROOT = dirname(DJANGO_ROOT)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['IS_PRODUCTION'] != '1';
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 ALLOWED_HOSTS = ['localhost']
 
-if DEBUG != True:
-    ALLOWED_HOSTS = ['alexventure.com']
+# if DEBUG != True:
+#     ALLOWED_HOSTS = ['alexventure.com',]
 
 
 
@@ -187,63 +188,6 @@ STATICFILES_FINDERS = (
         'compressor.finders.CompressorFinder',
 )
 
-# browserfify-specific
-# PIPELINE_COMPILERS = (
-#     'react.utils.pipeline.JSXCompiler',
-#     'pipeline_browserify.compiler.BrowserifyCompiler',
-#     'pipeline.compilers.sass.SASSCompiler',
-        
-# )
-
-# PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-# PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
-
-# PIPELINE_BROWSERIFY_ARGUMENTS = None
-
-# if DEBUG:
-#         PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify --presets es2015 react'
-
-
-# PIPELINE_CSS = {
-#         'app_style': {
-#                 'source_filenames': (
-#                         'css/style.scss',
-#                 ),
-#                 'output_filename': 'css/app.css'
-#         }
-# }
-
-
-# PIPELINE_JS = {
-#         'ReactJs': {
-#                 'source_filenames': (
-#                     "js/bower_components/react/react.js",
-#                     "js/bower_components/react/react-dom.js",
-#                 ),
-#                 'output_filename': 'js/react.js'
-#         },
-#         'Alexventure': {
-#             'source_filenames': (
-#                 "js/app.bundle.js",
-#             ),
-#             'output_filename': 'js/app.js'
-#         },
-# }
-
-# PIPELINE_ENABLED = not DEBUG
-
-# PIPELINE_BROWSERIFY_BINARY = os.path.join(BASE_DIR, 'static/js/node_modules/.bin/browserify')
-
-# PIPELINE = {
-#     'PIPELINE_ENABLED': PIPELINE_ENABLED,
-#     'BROWSERIFY_BINARY': PIPELINE_BROWSERIFY_BINARY,
-#     'BROWSERIFY_ARGUMENTS': PIPELINE_BROWSERIFY_ARGUMENTS,
-#     'JAVASCRIPT': PIPELINE_JS,
-#     'STYLESHEETS': PIPELINE_CSS,
-#     'JS_COMPRESSOR': PIPELINE_JS_COMPRESSOR,
-#     'CSS_COMPRESSOR': PIPELINE_CSS_COMPRESSOR,
-#     'COMPILERS': PIPELINE_COMPILERS,
-# }
 
 COMPRESS_PRECOMPILERS = (
     ('text/scss', 'sass --scss {infile} {outfile}'),
