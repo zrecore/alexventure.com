@@ -4,7 +4,10 @@
   "description": "Alex Albino's Portfolio",
   "main": "alexventure.browserify.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.local.config.js --progress --colors",
+    "build-production": "webpack --config webpack.prod.config.js --progress --colors",
+    "watch": "node wpserver.js"
   },
   "repository": {
     "type": "git",

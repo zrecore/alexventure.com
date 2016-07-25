@@ -6,6 +6,7 @@ js/package.*.js
 js/webpack-stats.json
 js/webpack-stats-prod.json
 js/dist
+js/bundles
 css/alexventure*.css
 css/style.*.css
 rest_framework
