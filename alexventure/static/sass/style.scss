@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
 
-$primary-color: #0033aa;
-$background-color: #fefaee;
-$font-roboto: 'Roboto';
+$deep-orange-500: #FF5722;
 
-body { font-family: $font-roboto; background-color: $background-color; }
-h1 { color: $primary-color; }
+$primary-color: #fff;
+
+$background-color: #ccc;
+$font-roboto: 'Roboto', sans-serif;
+
+body { 
+    font-family:        $font-roboto; 
+    color:              $primary-color; 
+    background-color:   $background-color; 
+    font-size: 1.3em;
+    line-height: 2.0em;
+}

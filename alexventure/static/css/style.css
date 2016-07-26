@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
 body {
-  font-family: "Roboto";
-  background-color: #fefaee; }
-
-h1 {
-  color: #0033aa; }
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: #ccc;
+  font-size: 1.3em;
+  line-height: 2.0em; }
 
 /*# sourceMappingURL=style.css.map */
