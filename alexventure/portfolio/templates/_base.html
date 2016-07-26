@@ -1,4 +1,4 @@
-{% load render_bundle from webpack_loader %}{% load compress %}{% load static %}<DOCTYPE html>
+{% load render_bundle from webpack_loader %}{% load static %}<DOCTYPE html>
 <html charset="utf-8">
     <head>
         <meta charset="utf-8">
@@ -8,9 +8,7 @@
         <title>Alex Albino - Sr. Developer</title>
         <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
         
-        {% compress css %}
-        <link rel="stylesheet" type="text/scss" href="{% static 'css/style.scss' %}">
-        {% endcompress %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     </head>
     <body>
     

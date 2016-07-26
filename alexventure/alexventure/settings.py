@@ -34,7 +34,7 @@ DEBUG = os.environ['IS_PRODUCTION'] != '1';
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost',]
 
 if DEBUG != True:
     ALLOWED_HOSTS = ['alexventure.com',]
@@ -79,10 +79,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'compressor',
+    #'compressor',
     # 'pipeline',
     'rest_framework',
-    'sass',
+    #'sass_processor',
     'webpack_loader',
 ]
 
@@ -213,10 +213,5 @@ STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
         # 'pipeline.finders.PipelineFinder',
-        'compressor.finders.CompressorFinder',
-)
-
-
-COMPRESS_PRECOMPILERS = (
-    ('text/scss', 'sass --scss {infile} {outfile}'),
+        #'compressor.finders.CompressorFinder',
 )
