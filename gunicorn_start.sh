@@ -1,4 +1,5 @@
 #!/bin/bash
+PATH="$PATH:/home/aalbino/.rbenv/shims/"
 NAME="alexventure"
 DJANGODIR=/var/www/alexventure.com/alexventure
 SOCKFILE=/var/www/alexventure.com/alexventure/run/gunicorn.sock
