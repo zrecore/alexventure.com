@@ -37,7 +37,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 ALLOWED_HOSTS = ['localhost']
 
 if DEBUG != True:
-    ALLOWED_HOSTS = ['alexventure.com', 'localhost']
+    ALLOWED_HOSTS = ['alexventure.com',]
 
 LOGGING = {
     'version': 1,
