@@ -37,9 +37,35 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 ALLOWED_HOSTS = ['localhost']
 
 if DEBUG != True:
-    ALLOWED_HOSTS = ['alexventure.com',]
+    ALLOWED_HOSTS = ['alexventure.com', 'localhost']
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        }
+    }
+}
 
 
 # Application definition
@@ -147,7 +173,7 @@ WEBPACK_LOADER = {
 if not DEBUG:
     WEBPACK_LOADER['DEFAULT'].update({
         'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
+        'STATS_FILE': os.path.join(BASE_DIR, 'static/js/webpack-stats-prod.json')
     })
 
 # Static files (CSS, JavaScript, Images)
