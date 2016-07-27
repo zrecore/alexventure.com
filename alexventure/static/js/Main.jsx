@@ -1,9 +1,11 @@
 import React, {Component}       from 'react';
 
+import AppBar                   from 'material-ui/AppBar';
 import Dialog                   from 'material-ui/Dialog';
 import Divider                  from 'material-ui/Divider';
 import {deepOrange500}          from 'material-ui/styles/colors';
 import FlatButton               from 'material-ui/FlatButton';
+import FloatingActionButton     from 'material-ui/FloatingActionButton';
 import getMuiTheme              from 'material-ui/styles/getMuiTheme';
 import {GridList, GridTile}     from 'material-ui/GridList';
 import IconButton               from 'material-ui/IconButton';
@@ -25,14 +27,6 @@ const styles = {
         overflowY: 'auto',
         marginBottom: 24,
     },
-    container: {
-        textAlign: 'center',
-        paddingTop: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 10,
-        margin: 50,
-    }
 };
 
 const muiTheme = getMuiTheme({
@@ -95,62 +89,40 @@ class Main extends Component {
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <Paper>
-                    <div style={styles.container}>
-                        <Dialog
-                            open={this.state.open}
-                            title="Super Secret Password"
-                            actions={standardActions}
-                            onRequestClose={this.handleRequestClose}
-                        >
-                            1-2-3-4-5    
-                        </Dialog>
-                        <h1>Alex Albino - Sr. Developer</h1>
-                        <sub>Web, Hardware, Software, Interactive</sub>
-                        <Divider />
-                        
-                        <p>
-                        I am currently working on a rewrite of my portfolio using Python 3, Django, and React. I also write C#, PHP, C, C++, and Java.
-                        </p>
-                       
-                        <p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
-                        
-                    </div>
-                    <div style={styles.root}>
-                        <GridList
-                            cols={2}
-                            cellHeight={200}
-                            padding={1}
-                            style={styles.gridList}
-                        >
-                        {tilesData.map((tile) => (
-                            <GridTile
-                                key={tile.img}
-                                title={tile.title}
-                                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                                actionPosition="left"
-                                titlePosition="top"
-                                titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0) 100%)"
-                                cols={tile.featured ? 2 : 1}
-                                rows={tile.featured ? 2 : 1}
-                            >
-                                <img src={tile.img} />
-                            </GridTile>
-                        ))}
+                <div>
+                    <AppBar id="appbarMain" />
+                    <Paper id="paperMain" zDepth={5} rounded={false}>
+
+                        <section id="sectionHeader">
+                            <div id="fabuttonAuthor">
+                                <FloatingActionButton>
+                                    <img src="/static/media/alexalbino-160x160px.png" id="authorImage" />
+                                </FloatingActionButton>
+                            </div>
+                            <h1>Alex Albino</h1>
+                            <sub>Web, Hardware, Software, Interactive</sub>
                             
-                        </GridList>
+                            
+                            <p>
+                            I am currently working on a rewrite of my portfolio using Python 3, Django, and React. I also write C#, PHP, C, C++, and Java.
+                            </p>
+                           
+                            <p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
+                            
+                        </section>
                         
-                    </div>
-                    <div style={styles.container}>
-                        <h3>Github repositories</h3>
-                        <List>
-                            <ListItem><RaisedButton label="ZRECore" href="https://github.com/zrecore" /></ListItem>
-                            <ListItem><RaisedButton label="Femtoduino" href="https://github.com/femtoduino" /></ListItem>
-                            <ListItem><RaisedButton label="Femto.io" href="https://github.com/femtoio" /></ListItem>
-                            <ListItem><RaisedButton label="XTAL.io" href="https://github.com/xtalio" /></ListItem>
-                        </List>
-                    </div>
-                </Paper>
+                        <section id="sectionFooter">
+                            <h3>Github repositories</h3>
+                            <List>
+                                <ListItem><RaisedButton label="ZRECore" href="https://github.com/zrecore" /></ListItem>
+                                <ListItem><RaisedButton label="Femtoduino" href="https://github.com/femtoduino" /></ListItem>
+                                <ListItem><RaisedButton label="Femto.io" href="https://github.com/femtoio" /></ListItem>
+                                <ListItem><RaisedButton label="XTAL.io" href="https://github.com/xtalio" /></ListItem>
+                            </List>
+                        </section>
+                    </Paper>
+
+                </div>
             </MuiThemeProvider>
         );
     }
