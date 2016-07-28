@@ -94,31 +94,44 @@ class Main extends Component {
                     <Paper id="paperMain" zDepth={5} rounded={false}>
 
                         <section id="sectionHeader">
+
+                            <div id="fabuttonLinkedIn" className="fabutton">
+                                <FloatingActionButton href="https://linkedin.com/in/alexalbino">
+                                    <img src="/static/media/icon-linkedin-60x60px.png" id="linkedInImage" />
+                                </FloatingActionButton>
+                            </div>                            
+
+                            <div id="fabuttonTwitter" className="fabutton">
+                                <FloatingActionButton href="https://twitter.com/zrecommerce">
+                                    <img src="/static/media/icon-twitter-60x60px.png" id="twitterImage" />
+                                </FloatingActionButton>
+                            </div>
                             <div id="fabuttonAuthor">
-                                <FloatingActionButton>
+                                <FloatingActionButton href="/">
                                     <img src="/static/media/alexalbino-160x160px.png" id="authorImage" />
                                 </FloatingActionButton>
                             </div>
+
                             <h1>Alex Albino</h1>
                             <sub>Web, Hardware, Software, Interactive</sub>
                             
                             
                             <p>
-                            I am currently working on a rewrite of my portfolio using Python 3, Django, and React. I also write C#, PHP, C, C++, and Java.
+                                Seasoned Developer with experience in <em>C#, Python, PHP, Node (es2015/es6, es5, Typescript), and Java.</em>
                             </p>
+
+                            <h2>Tools of the Trade</h2>
+                            <p>
+                                On the front-end, I leverage the following tools: <em>AngularJS 2, React, Polymer, SASS, Less.</em>
+                            </p>
+                            <p>
+                                My technology stack experience includes <em>.Net Core 1.0, Web API 2, Zend Framework, APIGility, Django, Ionic Framework, Spring.io, Grunt, Gulp, Yeoman, Docker, Vagrant, MSSQL, MySQL, Mongo, SQLite, UE4, Unity3D, Bluetooth 4.0, ARM, AVR.</em>
+                            </p>
+
+                            <p>Need a capabable developer on your team? I am available for work on a W2 basis (remote).</p>
                            
-                            <p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
+                            <p>Source code for this website is available <a href="https://github.com/zrecore/alexventure.com">on my github repo</a></p>
                             
-                        </section>
-                        
-                        <section id="sectionFooter">
-                            <h3>Github repositories</h3>
-                            <List>
-                                <ListItem><RaisedButton label="ZRECore" href="https://github.com/zrecore" /></ListItem>
-                                <ListItem><RaisedButton label="Femtoduino" href="https://github.com/femtoduino" /></ListItem>
-                                <ListItem><RaisedButton label="Femto.io" href="https://github.com/femtoio" /></ListItem>
-                                <ListItem><RaisedButton label="XTAL.io" href="https://github.com/xtalio" /></ListItem>
-                            </List>
                         </section>
                     </Paper>
 
