@@ -93,8 +93,14 @@ class Main extends Component {
 
         const standardActions = [
             <RaisedButton
-                label="OK, Got it"
+                label="Cancel"
+                secondary={true}
+                onTouchTap={this.handleRequestClose.bind(this.component)}
+            />,
+            <RaisedButton
+                label="OK, E-Mail Alex!"
                 primary={true}
+                href="mailto:webmaster@alexventure.com"
                 onTouchTap={this.handleRequestClose.bind(this.component)}
             />,
         ];
@@ -102,7 +108,7 @@ class Main extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-
+                    
                     <AppBar id="appbarMain" />
                     <Paper id="paperMain" zDepth={5} rounded={false}>
 
@@ -156,11 +162,10 @@ class Main extends Component {
                             <p> Get in contact with me to schedule an appointment (Hangouts, Skype).</p>
                            
                             <p>Source code for this website is available <a href="https://github.com/zrecore/alexventure.com">on my github repo</a></p>
-                            
                         </section>
-
                         <section id="sectionFooter">&copy; Alex Albino, 2016 - All Rights Reserved - Vallejo, CA</section>
                     </Paper>
+
                     <Dialog
                         title="Contact Alex!"
                         actions={standardActions}
@@ -168,10 +173,6 @@ class Main extends Component {
                         open={this.state.open}
                         onRequestClose={this.handleClose}>
                         <p>I am available Monday through Friday, and generally respond within 24 hours.</p>
-                        <p>
-                        <em>Tap my e-mail to contact me: </em>
-                        <FlatButton href="mailto:webmaster@alexventure.com">webmaster@alexventure.com</FlatButton>
-                        </p>
                     </Dialog>
                 </div>
             </MuiThemeProvider>
