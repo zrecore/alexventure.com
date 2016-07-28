@@ -1,9 +1,11 @@
 import React, {Component}       from 'react';
 
+import AppBar                   from 'material-ui/AppBar';
 import Dialog                   from 'material-ui/Dialog';
 import Divider                  from 'material-ui/Divider';
 import {deepOrange500}          from 'material-ui/styles/colors';
 import FlatButton               from 'material-ui/FlatButton';
+import FloatingActionButton     from 'material-ui/FloatingActionButton';
 import getMuiTheme              from 'material-ui/styles/getMuiTheme';
 import {GridList, GridTile}     from 'material-ui/GridList';
 import IconButton               from 'material-ui/IconButton';
@@ -12,6 +14,7 @@ import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 import Paper                    from 'material-ui/Paper';
 import RaisedButton             from 'material-ui/RaisedButton';
 import StarBorder               from 'material-ui/svg-icons/toggle/star-border';
+import TextField                from 'material-ui/TextField';
 
 const styles = {
     root: {
@@ -25,14 +28,6 @@ const styles = {
         overflowY: 'auto',
         marginBottom: 24,
     },
-    container: {
-        textAlign: 'center',
-        paddingTop: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 10,
-        margin: 50,
-    }
 };
 
 const muiTheme = getMuiTheme({
@@ -61,8 +56,11 @@ const tilesData = [
 ];
 
 class Main extends Component {
+
     constructor(props, context) {
         super(props, context);
+
+        this.component = this;
 
         this.handleRequestClose = this.handleRequestClose.bind(this);
         this.handleTouchTap = this.handleTouchTap.bind(this);
@@ -70,6 +68,13 @@ class Main extends Component {
         this.state = {
             open: false,
         };
+
+    }
+
+    handleOpen() {
+        this.setState({
+            open: true
+        });
     }
 
     handleRequestClose() {
@@ -85,72 +90,90 @@ class Main extends Component {
     }
 
     render() {
-        const standardActions = (
-            <FlatButton
-                label="Ok"
+
+        const standardActions = [
+            <RaisedButton
+                label="OK, Got it"
                 primary={true}
-                onTouchTap={this.handleRequestClose}
-            />
-        );
+                onTouchTap={this.handleRequestClose.bind(this.component)}
+            />,
+        ];
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <Paper>
-                    <div style={styles.container}>
-                        <Dialog
-                            open={this.state.open}
-                            title="Super Secret Password"
-                            actions={standardActions}
-                            onRequestClose={this.handleRequestClose}
-                        >
-                            1-2-3-4-5    
-                        </Dialog>
-                        <h1>Alex Albino - Sr. Developer</h1>
-                        <sub>Web, Hardware, Software, Interactive</sub>
-                        <Divider />
-                        
-                        <p>
-                        I am currently working on a rewrite of my portfolio using Python 3, Django, and React. I also write C#, PHP, C, C++, and Java.
-                        </p>
-                       
-                        <p>This website code is available <a href="https://github.com/zrecore/alexventure.com">on my github repository, as the alexventure.com project</a></p>
-                        
-                    </div>
-                    <div style={styles.root}>
-                        <GridList
-                            cols={2}
-                            cellHeight={200}
-                            padding={1}
-                            style={styles.gridList}
-                        >
-                        {tilesData.map((tile) => (
-                            <GridTile
-                                key={tile.img}
-                                title={tile.title}
-                                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                                actionPosition="left"
-                                titlePosition="top"
-                                titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.3) 90%,rgba(0,0,0,0) 100%)"
-                                cols={tile.featured ? 2 : 1}
-                                rows={tile.featured ? 2 : 1}
-                            >
-                                <img src={tile.img} />
-                            </GridTile>
-                        ))}
+                <div>
+
+                    <AppBar id="appbarMain" />
+                    <Paper id="paperMain" zDepth={5} rounded={false}>
+
+                        <section id="sectionHeader">
                             
-                        </GridList>
-                        
-                    </div>
-                    <div style={styles.container}>
-                        <h3>Github repositories</h3>
-                        <List>
-                            <ListItem><RaisedButton label="ZRECore" href="https://github.com/zrecore" /></ListItem>
-                            <ListItem><RaisedButton label="Femtoduino" href="https://github.com/femtoduino" /></ListItem>
-                            <ListItem><RaisedButton label="Femto.io" href="https://github.com/femtoio" /></ListItem>
-                            <ListItem><RaisedButton label="XTAL.io" href="https://github.com/xtalio" /></ListItem>
-                        </List>
-                    </div>
-                </Paper>
+                            <div id="fabuttonContact" className="fabutton">
+                                <FloatingActionButton onTouchTap={this.handleOpen.bind(this.component)}>
+                                    <img src="/static/media/icon-contact-60x60px.png" id="contactImage" />
+                                </FloatingActionButton>
+                            </div>
+
+                            <div id="fabuttonLinkedIn" className="fabutton">
+                                <FloatingActionButton href="https://linkedin.com/in/alexalbino">
+                                    <img src="/static/media/icon-linkedin-60x60px.png" id="linkedInImage" />
+                                </FloatingActionButton>
+                            </div>                            
+
+                            <div id="fabuttonTwitter" className="fabutton">
+                                <FloatingActionButton href="https://twitter.com/zrecommerce">
+                                    <img src="/static/media/icon-twitter-60x60px.png" id="twitterImage" />
+                                </FloatingActionButton>
+                            </div>
+                            <div id="fabuttonAuthor">
+                                <FloatingActionButton href="/">
+                                    <img src="/static/media/alexalbino-160x160px.png" id="authorImage" />
+                                </FloatingActionButton>
+                            </div>
+
+                            <h1>Alex Albino</h1>
+                            <sub>Web, Hardware, Software, Interactive</sub>
+                            
+                            
+                            <p>
+                                Seasoned Developer with experience in <em>C#, Python, PHP, Node (es2015/es6, es5, Typescript), and Java.</em>
+                            </p>
+
+                            <h2>Tools of the Trade</h2>
+                            <p>
+                                On the front-end, I leverage the following tools: <em>AngularJS 2, React, Polymer, SASS, Less.</em>
+                            </p>
+                            <p>
+                                My technology stack experience includes <em>.Net Core 1.0, Web API 2, Zend Framework, APIGility, Django, Ionic Framework, Spring.io, Grunt, Gulp, Yeoman, Docker, Vagrant, Entity Framework, MySQL, Mongo, SQLite, UE4, Unity3D, Bluetooth 4.0, ARM, AVR.</em>
+                            </p>
+
+                            <h2>For Hire</h2>
+
+                            <p>Need a capabable developer on your team? I am available for work on a W2 basis (remote). My rates are negotiable (unless you are a jerk) and I am happy to help with your development needs.</p>
+
+                            <p>No need for over-the-top SV style perks. As a professional, I get the job done - <em>promptly, properly, and courteously.</em></p>
+
+                            <p> Get in contact with me to schedule an appointment (Hangouts, Skype).</p>
+                           
+                            <p>Source code for this website is available <a href="https://github.com/zrecore/alexventure.com">on my github repo</a></p>
+                            
+                        </section>
+
+                        <section id="sectionFooter">&copy; Alex Albino, 2016 - All Rights Reserved - Vallejo, CA</section>
+                    </Paper>
+                    <Dialog
+                        title="Contact Alex!"
+                        actions={standardActions}
+                        modal={false}
+                        open={this.state.open}
+                        onRequestClose={this.handleClose}>
+                        <p>I am available Monday through Friday, and generally respond within 24 hours.</p>
+                        <p>
+                        <em>Tap my e-mail to contact me: </em>
+                        <FlatButton href="mailto:webmaster@alexventure.com">webmaster@alexventure.com</FlatButton>
+                        </p>
+                    </Dialog>
+                </div>
             </MuiThemeProvider>
         );
     }
