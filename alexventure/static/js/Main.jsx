@@ -14,6 +14,7 @@ import MuiThemeProvider         from 'material-ui/styles/MuiThemeProvider';
 import Paper                    from 'material-ui/Paper';
 import RaisedButton             from 'material-ui/RaisedButton';
 import StarBorder               from 'material-ui/svg-icons/toggle/star-border';
+import TextField                from 'material-ui/TextField';
 
 const styles = {
     root: {
@@ -55,8 +56,11 @@ const tilesData = [
 ];
 
 class Main extends Component {
+
     constructor(props, context) {
         super(props, context);
+
+        this.component = this;
 
         this.handleRequestClose = this.handleRequestClose.bind(this);
         this.handleTouchTap = this.handleTouchTap.bind(this);
@@ -64,6 +68,13 @@ class Main extends Component {
         this.state = {
             open: false,
         };
+
+    }
+
+    handleOpen() {
+        this.setState({
+            open: true
+        });
     }
 
     handleRequestClose() {
@@ -79,21 +90,29 @@ class Main extends Component {
     }
 
     render() {
-        const standardActions = (
-            <FlatButton
-                label="Ok"
+
+        const standardActions = [
+            <RaisedButton
+                label="OK, Got it"
                 primary={true}
-                onTouchTap={this.handleRequestClose}
-            />
-        );
+                onTouchTap={this.handleRequestClose.bind(this.component)}
+            />,
+        ];
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
+
                     <AppBar id="appbarMain" />
                     <Paper id="paperMain" zDepth={5} rounded={false}>
 
                         <section id="sectionHeader">
+                            
+                            <div id="fabuttonContact" className="fabutton">
+                                <FloatingActionButton onTouchTap={this.handleOpen.bind(this.component)}>
+                                    <img src="/static/media/icon-contact-60x60px.png" id="contactImage" />
+                                </FloatingActionButton>
+                            </div>
 
                             <div id="fabuttonLinkedIn" className="fabutton">
                                 <FloatingActionButton href="https://linkedin.com/in/alexalbino">
@@ -125,16 +144,35 @@ class Main extends Component {
                                 On the front-end, I leverage the following tools: <em>AngularJS 2, React, Polymer, SASS, Less.</em>
                             </p>
                             <p>
-                                My technology stack experience includes <em>.Net Core 1.0, Web API 2, Zend Framework, APIGility, Django, Ionic Framework, Spring.io, Grunt, Gulp, Yeoman, Docker, Vagrant, MSSQL, MySQL, Mongo, SQLite, UE4, Unity3D, Bluetooth 4.0, ARM, AVR.</em>
+                                My technology stack experience includes <em>.Net Core 1.0, Web API 2, Zend Framework, APIGility, Django, Ionic Framework, Spring.io, Grunt, Gulp, Yeoman, Docker, Vagrant, Entity Framework, MySQL, Mongo, SQLite, UE4, Unity3D, Bluetooth 4.0, ARM, AVR.</em>
                             </p>
 
-                            <p>Need a capabable developer on your team? I am available for work on a W2 basis (remote).</p>
+                            <h2>For Hire</h2>
+
+                            <p>Need a capabable developer on your team? I am available for work on a W2 basis (remote). My rates are negotiable (unless you are a jerk) and I am happy to help with your development needs.</p>
+
+                            <p>No need for over-the-top SV style perks. As a professional, I get the job done - <em>promptly, properly, and courteously.</em></p>
+
+                            <p> Get in contact with me to schedule an appointment (Hangouts, Skype).</p>
                            
                             <p>Source code for this website is available <a href="https://github.com/zrecore/alexventure.com">on my github repo</a></p>
                             
                         </section>
-                    </Paper>
 
+                        <section id="sectionFooter">&copy; Alex Albino, 2016 - All Rights Reserved - Vallejo, CA</section>
+                    </Paper>
+                    <Dialog
+                        title="Contact Alex!"
+                        actions={standardActions}
+                        modal={false}
+                        open={this.state.open}
+                        onRequestClose={this.handleClose}>
+                        <p>I am available Monday through Friday, and generally respond within 24 hours.</p>
+                        <p>
+                        <em>Tap my e-mail to contact me: </em>
+                        <FlatButton href="mailto:webmaster@alexventure.com">webmaster@alexventure.com</FlatButton>
+                        </p>
+                    </Dialog>
                 </div>
             </MuiThemeProvider>
         );
