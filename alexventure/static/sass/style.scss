@@ -147,7 +147,7 @@ p { margin-bottom: 30px; }
 and (max-width: 1024px)
 {
     body {
-        background-size:   100% auto;
+        background-size:  100% auto;
         background-repeat: no-repeat;
     }
 
@@ -226,20 +226,20 @@ and (max-width: 1024px)
 
     #fabuttonTwitter
     {
-        margin-left: 36%;
+        margin-left: calc(50% - 70px);
         margin-top: -258px;
     }
 
     #fabuttonLinkedIn
     {
-        margin-left: 51%;
-        margin-top: -150px;
+        margin-left: calc(50% - 15px);
+        margin-top: -215px;
     }
 
     #fabuttonContact
     {
-        margin-left: 47%;
-        margin-top: -215px;
+        margin-left: calc(50% + 7px);
+        margin-top: -150px;
     }
 
     #authorImage {
@@ -255,4 +255,13 @@ and (max-width: 1024px)
     }
 
 
+}
+
+@media only screen
+and (max-width: 495px)
+{
+
+    body {
+        background-size: cover;
+    }
 }
